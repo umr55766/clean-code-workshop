@@ -17,6 +17,10 @@ public class Customer {
     rentals.add(arg);
   }
 
+  public List<Rental> getRental() {
+    return rentals;
+  }
+
   public String getName() {
     return name;
   }
@@ -29,21 +33,6 @@ public class Customer {
     }
 
     return totalAmount;
-  }
-
-  public String statement() {
-    String result = "Rental Record for " + getName() + "\n";
-
-    for (Rental rental : rentals) {
-      //show figures for this rental
-      result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getRentAmount() + "\n";
-    }
-
-    //add footer lines result
-    result += "Amount owed is " + getTotalAmountOwed(rentals) + "\n";
-    result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points";
-
-    return result;
   }
 
   public String htmlStatement() {
@@ -61,7 +50,7 @@ public class Customer {
     return result;
   }
 
-  private int getTotalFrequentRenterPoints() {
+  public int getTotalFrequentRenterPoints() {
     int frequentRenterPoints = 0;
 
     for (Rental rental : rentals) {
