@@ -25,7 +25,7 @@ public class Customer {
     return name;
   }
 
-  public double getTotalAmountOwed(List<Rental> rentals) {
+  private double getTotalAmountOwed() {
     double totalAmount = 0;
 
     for (Rental rental : rentals) {
@@ -33,6 +33,10 @@ public class Customer {
     }
 
     return totalAmount;
+  }
+
+  public String statement() {
+    return TextStatement.getStatementFor(this, getTotalAmountOwed(), getTotalFrequentRenterPoints());
   }
 
   public String htmlStatement() {
@@ -44,13 +48,13 @@ public class Customer {
     }
 
     //add footer lines result
-    result += "Amount owed is " + getAsBold(getTotalAmountOwed(rentals)) + LINE_BREAK;
+    result += "Amount owed is " + getAsBold(getTotalAmountOwed()) + LINE_BREAK;
     result += "You earned " + getAsBold(getTotalFrequentRenterPoints()) + " frequent renter points";
 
     return result;
   }
 
-  public int getTotalFrequentRenterPoints() {
+  private int getTotalFrequentRenterPoints() {
     int frequentRenterPoints = 0;
 
     for (Rental rental : rentals) {

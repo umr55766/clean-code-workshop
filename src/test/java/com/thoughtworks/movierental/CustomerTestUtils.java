@@ -6,7 +6,7 @@ public class CustomerTestUtils {
     }
 
     public static String getTestCustomerStatement() {
-        return TextStatement.getStatementFor(getTestCustomer());
+        return getTestCustomer().statement();
     }
 
     public static String getTestCustomerHtmlStatement() {
@@ -18,6 +18,6 @@ public class CustomerTestUtils {
     }
 
     public static String getTestCustomerStatement(Customer customer) {
-        return TextStatement.getStatementFor(customer);
+        return customer.statement();
     }
 }
