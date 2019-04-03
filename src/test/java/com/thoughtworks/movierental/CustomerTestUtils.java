@@ -9,6 +9,14 @@ public class CustomerTestUtils {
         return getTestCustomer().statement();
     }
 
+    public static String getTestCustomerHtmlStatement() {
+        return getTestCustomer().htmlStatement();
+    }
+
+    public static String getTestCustomerHtmlStatement(Customer customer) {
+        return customer.htmlStatement();
+    }
+
     public static String getTestCustomerStatement(Customer customer) {
         return customer.statement();
     }
