@@ -3,6 +3,8 @@ package com.thoughtworks.movierental;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.thoughtworks.movierental.HtmlUtils.*;
+
 public class Customer {
   private String name;
   private List<Rental> rentals = new ArrayList<>();
@@ -40,6 +42,21 @@ public class Customer {
     //add footer lines result
     result += "Amount owed is " + getTotalAmountOwed(rentals) + "\n";
     result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points";
+
+    return result;
+  }
+
+  public String htmlStatement() {
+    String result = getAsHeading("Rental Record for " + getAsBold(getName()) + LINE_BREAK);
+
+    for (Rental rental : rentals) {
+      //show figures for this rental
+      result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getRentAmount() + LINE_BREAK;
+    }
+
+    //add footer lines result
+    result += "Amount owed is " + getAsBold(getTotalAmountOwed(rentals)) + LINE_BREAK;
+    result += "You earned " + getAsBold(getTotalFrequentRenterPoints()) + " frequent renter points";
 
     return result;
   }
